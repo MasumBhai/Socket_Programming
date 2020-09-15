@@ -9,6 +9,8 @@ import java.net.Socket;
 public class Client {
 		public static final String Server_ip = "127.0.0.1"; //no matter what,this ip address will work on every computer
 		public static final int Server_port = 9090;
+
+
 	public Client(){
 		try {
 			Socket socket = new Socket(Server_ip,Server_port);
