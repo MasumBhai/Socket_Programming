@@ -1,8 +1,9 @@
-// TODO: 9/14/2020 drawBack is if client runs the programme before server, then it fails to connect 
+// TODO: 9/14/2020 drawBack is if client runs the programme before server, then it fails to connect
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client {
@@ -12,9 +13,19 @@ public class Client {
 		try {
 			Socket socket = new Socket(Server_ip,Server_port);
 			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			String serverResponse = input.readLine();
-			//here we are ccatching data into an option pane
-			JOptionPane.showMessageDialog(null,serverResponse);
+			BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+			PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
+			while (true) {
+				System.out.println("> ");
+				String command = keyboard.readLine();
+				if(command.equals("bye")) {break;}
+				out.println(command);
+
+				String serverResponse = input.readLine();
+				System.out.println("Server says : "+ serverResponse);
+				//here we are ccatching data into an option pane
+				//JOptionPane.showMessageDialog(null, serverResponse);
+			}
 			socket.close();
 			System.exit(0);
 		} catch (IOException e) {
@@ -23,6 +34,7 @@ public class Client {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("Write something...");
 		Client DateClient = new Client();
 	}
 }
