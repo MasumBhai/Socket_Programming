@@ -13,7 +13,6 @@ public class Two_way_multiple_Client_at_a_time_Server implements Runnable {
 	public static final int Server_Port = 9090;
 	String request = "";
 	private Socket client;
-	private ServerSocket litener;
 	private PrintWriter Out;
 	private BufferedReader In;
 
@@ -24,8 +23,6 @@ public class Two_way_multiple_Client_at_a_time_Server implements Runnable {
 	}
 
 	public Two_way_multiple_Client_at_a_time_Server(Socket clientSocket) throws IOException {
-//		this.litener = new ServerSocket(Server_Port);
-//		System.out.println("Server is waiting for client to connect...");
 		this.client = clientSocket;
 		Out = new PrintWriter(client.getOutputStream(),true);
 		In = new BufferedReader(new InputStreamReader(this.client.getInputStream()));

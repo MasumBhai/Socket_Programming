@@ -1,5 +1,4 @@
 // TODO: 9/14/2020 drawBack is if client runs the programme before server, then it fails to connect
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,8 +24,6 @@ public class Client {
 
 				String serverResponse = input.readLine();
 				System.out.println("Server says : "+ serverResponse);
-				//here we are ccatching data into an option pane
-				//JOptionPane.showMessageDialog(null, serverResponse);
 			}
 			socket.close();
 			System.exit(0);
@@ -37,6 +34,6 @@ public class Client {
 
 	public static void main(String[] args) {
 		System.out.println("Write something...");
-		Client DateClient = new Client();
+		Client myClientObj = new Client();
 	}
 }
